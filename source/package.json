@@ -10,7 +10,6 @@
     , "mongodb": ">= 1.2.13"
     , "passport": ">= 0.1.15"
     , "passport-local":  ">= 0.1.6"
-    , "passport-oauth": ">= 0.1.14"
     , "connect-flash": "~0.1.0"
   },
   "engines": { "node": ">= 0.6.0" }

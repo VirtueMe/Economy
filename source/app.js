@@ -85,7 +85,7 @@ app.configure('production', function() {
 });
 
 
-app.get('/', showAlternative, function(req, res){
+app.get('/', ensureAuthenticated, function(req, res){
   res.render('index', { user: req.user });
 });
 
@@ -98,25 +98,6 @@ app.get('/login', function(req, res){
   res.render('login', { user: req.user || req.flash('user'), message: req.flash('error') });
 });
 
-app.get('/auth/provider', passport.authenticate('provider'));
-
-app.get('/auth/provider/callback',
-  passport.authenticate('provider', { successRedirect: '/',
-                                      failureRedirect: '/login' }));
-// POST /login
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-//
-//   curl -v -d "username=bob&password=secret" http://127.0.0.1:3000/login
-/*
-app.post('/login',
-  passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
-  function(req, res) {
-    res.redirect('/');
-  });
-*/
 // POST /login
 //   This is an alternative implementation that uses a custom callback to
 //   acheive the same functionality.
