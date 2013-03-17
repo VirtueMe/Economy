@@ -1,0 +1,40 @@
+// my-template.jade
+extends layout
+
+block head
+  style
+    body {
+      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    }
+    
+block content
+  div.navbar.navbar-inverse.navbar-fixed-top
+    div.navbar-inner
+      div.container
+        button(type="button", class="btn btn-navbar", data-toggle="collapse", data-target=".nav-collapse")
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a(class="brand", href="#") Budsjett
+        div.nav-collapse.collapse
+          ul.nav
+            li.active
+              a(href="#") Hjem
+            li
+              a(href="#about") Om
+            li
+              a(href="#contact") Kontakt
+            li.dropdown.open
+              a(href="#", class="dropdown-toggle", data-toggle="dropdown")
+                Dropdown
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(href="/login") Logg På
+                li
+                  a(href="/auth/provider") Logg På (Oauth)              
+  div.container
+    h1 Budsjett Organisator
+    p Dette er en fin måte å organisere systemet på. Hvis du er logget på.
+  script(type='text/javascript', src='/assets/js/require.js', data-main="/assets/js/config")
+
